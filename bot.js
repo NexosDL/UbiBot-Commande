@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const prefix = "/";
 const client = new Discord.Client();
 const bot = new Discord.Client();
+const ms = require("ms");
 
 client.on('ready', () => {
     console.log('I am ready!')
@@ -33,6 +34,52 @@ if(message.content.startsWith(prefix + "ban")) {
 
     message.guild.member(bUser).ban(bReason);
     canal.send(banEmbed);
+}
+   
+if(message.content.startsWith(prefix + "mute")) {
+  let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+  if(!tomute) return message.reply("Je ne peux pas trouver l'utilisateur");
+  let muterole = message.guild.roles.find(`name`, "muté");
+  if(!muterole){
+    try{
+      muterole = await message.guild.createRole({
+        name: "muté",
+        color: "#000000",
+        permissions:[]
+      })
+      message.guild.channels.forEach(async (channel, id) => {
+        await channel.overwritePermissions(muterole, {
+          SEND_MESSAGES: false,
+          ADD_REACTIONS: false
+        });
+      });
+    }catch(e){
+      console.log(e.stack);
+    }
+  }
+  let mutetime = args[1];
+  if(!mutetime) return message.reply("Tu n\'as pas spécifié un temps");
+  if(!message.guild.channels.find("name", "logs")) return message.reply("Le salon #logs n'éxiste pas");
+
+  await(tomute.addRole(muterole.id));
+  message.reply(`<@${tomute.id}> a été mute pour ${ms(ms(mutetime))}`);
+  
+  const emb = new Discord.RichEmbed()
+  .setTitle("Mute")
+  .addField("Utilisateur mute", tomute.tag)
+  .addField("Mute par", message.author.tag)
+  .addField("Mute dans", message.channel.name)
+  .addField("Temps", ms(ms(mutetime)))
+  .addField("Raison", args[2] + args[3] + args[4] + args[5])
+  
+  message.guild.channels.find("name", "logs").send(emb)
+
+  setTimeout(function(){
+    tomute.removeRole(muterole.id);
+    message.channel.send(`<@${tomute.id}> a été unmute!`);
+  }, ms(mutetime));
+
+
 }
     
 });
