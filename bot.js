@@ -82,6 +82,14 @@ if(message.content.startsWith(prefix + "mute")) {
 
 }
     
+if(message.content.startsWith(prefix + "regl4586585")) {
+    const embed = new Discord.RichEmbed()
+    .setImage("https://media.discordapp.net/attachments/480871365994348544/481914418037522432/Reglement.png?width=440&height=474")
+    .setThumbnail("https://cdn.discordapp.com/attachments/480871365994348544/481914307043524648/Reglement.png");
+    message.channel.send(embed)
+    message.delete();
+}
+    
 });
 
 client.login(process.env.TOKEN);
