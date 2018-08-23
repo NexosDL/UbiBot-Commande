@@ -4,9 +4,9 @@ const client = new Discord.Client();
 const bot = new Discord.Client();
 
 client.on('ready', () => {
-    console.log('I am ready!');
+    console.log('I am ready!')
     client.user.setStatus('idle')
-    client.user.setActivity({game: {name: "En dévéloppement...", type: 0}});
+    client.setPresence({ game: { name: 'En dévéloppement...', type: 0 } });
 });
 
 client.on("message", async message => {
