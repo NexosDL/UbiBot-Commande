@@ -10,6 +10,8 @@ client.on('ready', () => {
 
 client.on("message", async message => {
     
+let args = message.content.split(" ").slice(1);
+    
 if(message.content.startsWith(prefix + "ban")) {
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("Je ne sais pas trouver cette personne");
