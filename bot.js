@@ -10,7 +10,7 @@ client.on('ready', () => {
 
 client.on("message", async message => {
     
-exports.run = (client, message, args, level) => {  
+if(message.content.startsWith(prefix + "ban")) {
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("Je ne sais pas trouver cette personne");
     let bReason = args.join(" ").slice(22);
@@ -27,10 +27,11 @@ exports.run = (client, message, args, level) => {
     .addField("Reason", bReason);
 
     let canal = message.guild.channels.find(`name`, "🔩logs");
+    if(!canal) return;
 
     message.guild.member(bUser).ban(bReason);
     canal.send(banEmbed);
-       }
+}
     
 });
 
