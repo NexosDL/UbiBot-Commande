@@ -93,7 +93,7 @@ if(message.content.startsWith(prefix + "regl4586585")) {
 if(message.content.startsWith(prefix + "help")) {
     const embed = new Discord.RichEmbed()
     .setTitle("Commande d'aide")
-    .setAuthor("Prefix: `/`")
+    .setTitle("Prefix: `/`")
     .setDescription("   `help`, `ban`, `kick`, `mute`");
     message.delete()
     message.channel.send(embed);
