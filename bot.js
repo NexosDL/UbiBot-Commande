@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const prefix = ".";
+const prefix = "@";
 const client = new Discord.Client();
 const bot = new Discord.Client();
 
