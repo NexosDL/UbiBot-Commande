@@ -5,7 +5,6 @@ const bot = new Discord.Client();
 
 client.on('ready', () => {
     console.log('I am ready!')
-    client.user.setStatus('idle')
     client.user.setPresence({ game: { name: 'En dévéloppement...', type: 0 } });
 });
 
