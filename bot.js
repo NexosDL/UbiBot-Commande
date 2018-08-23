@@ -98,6 +98,13 @@ if(message.content.startsWith(prefix + "help")) {
     message.delete()
     message.channel.send(embed);
 }
+if(message.content.startsWith(prefiw + "ttuuoo")) {
+  const embed = new Discord.RichEmbed()
+  .setDescription("Pour rejoindre le reste de la communauté, il suffit exécuter cette commande-ci: **_!join_**\nCette commande vous attribuera le rôle Spectateur\n\nCette commande à été ajouté le **_23/08/2018_** et mise à jour le **_23/08/2018_**\nLes mises à jour seront annoncer ici même.\n\n- Veuillez lire le message dans #😃bienvenue")
+  .setThumbnail("https://cdn.discordapp.com/attachments/481940647469907969/481946087813414912/Rejoindre_le_serveur_.png");
+  message.delete()
+  message.channel.send(embed)
+}    
     
 });
 
