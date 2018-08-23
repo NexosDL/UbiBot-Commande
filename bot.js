@@ -97,6 +97,7 @@ if(message.content.startsWith(prefix + "help")) {
     .setDescription("   `help`, `ban`, `kick`, `mute`");
     message.delete()
     message.channel.send(embed);
+}
     
 });
 
