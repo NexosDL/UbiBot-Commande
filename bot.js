@@ -28,6 +28,7 @@ let args = message.content.split(" ").slice(1);
     
 if(message.content.startsWith(prefix + "join")) {
     if(message.channel.id !== "482291107275866112") return message.reply("Tu n'es pas dans le bon salon");
+    
     const role = message.guild.roles.get("482291949852819497");
     message.member.addRole(role).catch(console.error);
     message.author.send("Bienvenue sur le serveur UbiMedia, tu as bien été enregistré, bonne continuation")
@@ -122,7 +123,7 @@ if(message.content.startsWith(prefix + "help")) {
 if(message.content.startsWith(prefix + "ttuuoo")) {
   const embed = new Discord.RichEmbed()
   .setImage("https://cdn.discordapp.com/attachments/481940647469907969/481946087813414912/Rejoindre_le_serveur_.png")
-  .setDescription("Pour rejoindre le reste de la communauté, il suffit exécuter cette commande-ci: **_!join_**\nCette commande vous attribuera le rôle Spectateur\n\nCette commande à été ajouté le **_23/08/2018_** et mise à jour le **_23/08/2018_**\nLes mises à jour seront annoncer ici même.\n\n- Veuillez lire le message dans #😃bienvenue");
+  .setDescription("Pour rejoindre le reste de la communauté, il suffit exécuter cette commande-ci: **_/join_**\nCette commande vous attribuera le rôle Spectateur\n\nCette commande à été ajouté le **_23/08/2018_** et mise à jour le **_23/08/2018_**\nLes mises à jour seront annoncer ici même.\n\n- Veuillez lire le message dans #😃bienvenue");
 
     
   message.delete()
