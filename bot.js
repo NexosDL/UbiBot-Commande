@@ -10,7 +10,7 @@ client.on('ready', () => {
 });
 
 bot.on("guildMemberRemove", member => {
-    const baur = member.guild.channels.find(m => m.name === "🎭aéroport")
+    const baur = member.guild.channels.get("482288985134071809")
     if (!baur) return;
     const embed = new Discord.RichEmbed()
     .setColor('#f44242')
