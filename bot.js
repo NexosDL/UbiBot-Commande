@@ -22,7 +22,7 @@ bot.on("guildMemberRemove", member => {
     baur.send(embed)
 })
 
-client.on("message", async message => {
+client.on("message", async (message) => {
     
 let args = message.content.split(" ").slice(1);
     
