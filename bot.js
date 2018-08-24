@@ -27,8 +27,8 @@ client.on("message", async function(message) {
 let args = message.content.split(" ").slice(1);
     
 if(message.content.startsWith(prefix + "join")) {
-    const role = message.guild.roles.get("482291949852819497");
     if(message.channel.id !== "482291107275866112") return message.reply("Tu n'es pas dans le bon salon");
+    const role = message.guild.roles.get("482291949852819497");
     message.author.addRole(role).catch(console.error);
     message.author.send("Bienvenue sur le serveur UbiMedia, tu as bien été enregistré, bonne continuation");
 }
