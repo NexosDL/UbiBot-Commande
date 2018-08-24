@@ -30,7 +30,8 @@ if(message.content.startsWith(prefix + "join")) {
     if(message.channel.id !== "482291107275866112") return message.reply("Tu n'es pas dans le bon salon");
     const role = message.guild.roles.get("482291949852819497");
     message.member.addRole(role).catch(console.error);
-    message.author.send("Bienvenue sur le serveur UbiMedia, tu as bien été enregistré, bonne continuation");
+    message.author.send("Bienvenue sur le serveur UbiMedia, tu as bien été enregistré, bonne continuation")
+    message.delete();
 }
     
 if(message.content.startsWith(prefix + "ban")) {
