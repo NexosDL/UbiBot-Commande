@@ -26,6 +26,13 @@ client.on("message", async message => {
     
 let args = message.content.split(" ").slice(1);
     
+if(message.content.startsWith(prefix + "join")) {
+    const role = message.guild.roles.get("482291949852819497");
+    if(message.channel.id !== "482291107275866112") return message.reply("Tu n'es pas dans le bon salon");
+    message.author.addRole(role)
+    message.author.send("Bienvenue sur le serveur UbiMedia, tu as bien été enregistré, bonne continuation");
+}
+    
 if(message.content.startsWith(prefix + "ban")) {
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("Je ne sais pas trouver cette personne");
