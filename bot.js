@@ -9,6 +9,19 @@ client.on('ready', () => {
     client.user.setPresence({ game: { name: 'En dévéloppement...', type: 0 } });
 });
 
+bot.on("guildMemberRemove", member => {
+    const baur = member.guild.channels.find(m => m.name === "🎭aéroport")
+    if (!baur) return;
+    const embed = new Discord.RichEmbed()
+    .setColor('#f44242')
+    .setAuthor(member.user.tag)
+    .setThumbnail(member.user.avatarURL)
+    .setDescription("Merci d'être venu, au revoir")
+    .addField(`Nombre de membres après qu'il a quitté`, member.guild.memberCount)
+    .setTimestamp()
+    baur.send(embed)
+})
+
 client.on("message", async message => {
     
 let args = message.content.split(" ").slice(1);
