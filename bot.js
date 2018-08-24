@@ -31,7 +31,7 @@ if(message.content.startsWith(prefix + "join")) {
     const role2 = message.guild.roles.get("482531843921674262");
     const role = message.guild.roles.get("482291949852819497");
     message.member.addRole(role).catch(console.error);
-    message.member.removeRole(role2).catch(console.error);
+    message.member.removeRole(message.author.guild.roles.find('name', 'Nouveau')).catch(console.error);
     message.author.send("Bienvenue sur le serveur UbiMedia, tu as bien été enregistré, bonne continuation")
     message.delete();
 }
