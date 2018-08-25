@@ -32,7 +32,7 @@ let args = message.content.split(" ").slice(1);
     
 if(message.content.startsWith(prefix + "staff")) {
     const embed = new Discord.RichEmbed()
-    .setAuthor("Liste des membres du staff", "message.guild.avatarURL")
+    .setAuthor("Liste des membres du staff", "https://media.discordapp.net/attachments/402932220458696742/482132251530887188/CameraStudoi.png?width=473&height=474")
     .setColor("#f47142")
     .addField("Administrateurs", "    - So_Skill\n    - Laarm")
     .addField("Managers", "    - eиıмøx")
