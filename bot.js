@@ -23,7 +23,6 @@ bot.on("guildMemberRemove", member => {
 })
 
 client.on("message", async message => {
-let mcsw = "message.content.startsWith";
     
     if (message.author.equals(bot.user)) return;
 
@@ -31,7 +30,7 @@ let mcsw = "message.content.startsWith";
     
 let args = message.content.split(" ").slice(1);
     
-if(mcsw(prefix + "join")) {
+if(message.content.startsWith(prefix + "join")) {
     if(message.channel.id !== "482291107275866112") return message.reply("Tu n'es pas dans le bon salon");
     const role2 = message.guild.roles.get("482531843921674262");
     const role = message.guild.roles.get("482291949852819497");
@@ -41,7 +40,7 @@ if(mcsw(prefix + "join")) {
     message.delete();
 }
     
-if(mcsw(prefix + "ban")) {
+if(message.content.startsWith(prefix + "ban")) {
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("Je ne sais pas trouver cette personne");
     let bReason = args.join(" ").slice(22);
@@ -64,7 +63,7 @@ if(mcsw(prefix + "ban")) {
     canal.send(banEmbed);
 }
    
-if(mcsw(prefix + "mute")) {
+if(message.content.startsWith(prefix + "mute")) {
   let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
   if(!tomute) return message.reply("Je ne peux pas trouver l'utilisateur");
   let muterole = message.guild.roles.find(`name`, "muté");
@@ -110,7 +109,7 @@ if(mcsw(prefix + "mute")) {
 
 }
   
-if(mcsw(prefix + "report")) {
+if(message.content.startsWith(prefix + "report")) {
     let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!rUser) return message.channel.send("Je ne peux pas trouver l\'utilisateur");
     let rreason = args.join(" ").slice(22);
@@ -135,7 +134,7 @@ if(mcsw(prefix + "report")) {
 
 }
     
-if(mcsw(prefix + "regl4586585")) {
+if(message.content.startsWith(prefix + "regl4586585")) {
     const embed = new Discord.RichEmbed()
     .setImage("https://cdn.discordapp.com/attachments/480871365994348544/481914307043524648/Reglement.png")
     .setImage("https://media.discordapp.net/attachments/480871365994348544/481914418037522432/Reglement.png?width=440&height=474");
@@ -143,7 +142,7 @@ if(mcsw(prefix + "regl4586585")) {
     message.delete();
 }
     
-if(mcsw(prefix + "help")) {
+if(message.content.startsWith(prefix + "help")) {
     const embed = new Discord.RichEmbed()
     .setTitle("Commande d'aide")
     .setTitle("Prefix: `/`")
