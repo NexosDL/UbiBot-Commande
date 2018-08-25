@@ -22,7 +22,11 @@ bot.on("guildMemberRemove", member => {
     baur.send(embed)
 })
 
-client.on("message", async function(message) {
+client.on("message", async message => {
+    
+    if (message.author.equals(bot.user)) return;
+
+    if (!message.content.startsWith(prefix)) return;
     
 let args = message.content.split(" ").slice(1);
     
