@@ -30,6 +30,16 @@ client.on("message", async message => {
     
 let args = message.content.split(" ").slice(1);
     
+if(message.content.startsWith(prefix + "staff")) {
+    const embed = new Discord.RichEmbed()
+    .setTitle("Liste des membres du staff")
+    .setColor("#f47142")
+    .addField("Administrateurs", "    - So_Skill\n    - Laarm")
+    .addField("Managers", "    - eиıмøx")
+    .addField("Développeurs bot", "    - Cecemel_PvP\n    - Minways Nexøs")
+    message.channel.send(embed)
+}
+    
 if(message.content.startsWith(prefix + "join")) {
     if(message.channel.id !== "482291107275866112") return message.reply("Tu n'es pas dans le bon salon");
     const role2 = message.guild.roles.get("482531843921674262");
