@@ -23,6 +23,7 @@ bot.on("guildMemberRemove", member => {
 })
 
 client.on("message", async message => {
+let mcsw = message.content.startsWith;
     
     if (message.author.equals(bot.user)) return;
 
@@ -30,7 +31,7 @@ client.on("message", async message => {
     
 let args = message.content.split(" ").slice(1);
     
-if(message.content.startsWith(prefix + "join")) {
+if(mcsw(prefix + "join")) {
     if(message.channel.id !== "482291107275866112") return message.reply("Tu n'es pas dans le bon salon");
     const role2 = message.guild.roles.get("482531843921674262");
     const role = message.guild.roles.get("482291949852819497");
@@ -40,7 +41,7 @@ if(message.content.startsWith(prefix + "join")) {
     message.delete();
 }
     
-if(message.content.startsWith(prefix + "ban")) {
+if(mcsw(prefix + "ban")) {
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("Je ne sais pas trouver cette personne");
     let bReason = args.join(" ").slice(22);
@@ -63,7 +64,7 @@ if(message.content.startsWith(prefix + "ban")) {
     canal.send(banEmbed);
 }
    
-if(message.content.startsWith(prefix + "mute")) {
+if(mcsw(prefix + "mute")) {
   let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
   if(!tomute) return message.reply("Je ne peux pas trouver l'utilisateur");
   let muterole = message.guild.roles.find(`name`, "muté");
@@ -86,7 +87,7 @@ if(message.content.startsWith(prefix + "mute")) {
   }
   let mutetime = args[1];
   if(!mutetime) return message.reply("Tu n\'as pas spécifié un temps");
-  if(!message.guild.channels.find("name", "logs")) return message.reply("Le salon #logs n'éxiste pas");
+  if(!message.guild.channels.find("name", "🔩logs")) return message.reply("Le salon #logs n'éxiste pas");
 
   await(tomute.addRole(muterole.id));
   message.reply(`<@${tomute.id}> a été mute pour ${ms(ms(mutetime))}`);
@@ -108,8 +109,33 @@ if(message.content.startsWith(prefix + "mute")) {
 
 
 }
+  
+if(mcsw(prefix + "report")) {
+    let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!rUser) return message.channel.send("Je ne peux pas trouver l\'utilisateur");
+    let rreason = args.join(" ").slice(22);
+    if(!rreason) return message.reply("Donne un argument");
+
+    let reportEmbed = new Discord.RichEmbed()
+    .setDescription("Reports")
+    .setColor("#15f153")
+    .addField("Utilisateur report", `Pseudo: ${rUser}\nID: ${rUser.id}`)
+    .addField("Report par", `Pseudo: ${message.author}\nID: ${message.author.id}`)
+    .addField("Salon", message.channel)
+    .addField("Temps", message.createdAt)
+    .addField("Reason", rreason);
+
+    message.reply(`Tu as bien report ${rUser}`)
+    let reportschannel = message.guild.channels.find(`name`, "🔩logs");
+    if(!reportschannel) return message.channel.send("Je ne peux pas trouver le salon #🔩logs");
+
+
+    message.delete().catch(O_o=>{});
+    reportschannel.send(reportEmbed);
+
+}
     
-if(message.content.startsWith(prefix + "regl4586585")) {
+if(mcsw(prefix + "regl4586585")) {
     const embed = new Discord.RichEmbed()
     .setImage("https://cdn.discordapp.com/attachments/480871365994348544/481914307043524648/Reglement.png")
     .setImage("https://media.discordapp.net/attachments/480871365994348544/481914418037522432/Reglement.png?width=440&height=474");
@@ -117,11 +143,11 @@ if(message.content.startsWith(prefix + "regl4586585")) {
     message.delete();
 }
     
-if(message.content.startsWith(prefix + "help")) {
+if(mcsw(prefix + "help")) {
     const embed = new Discord.RichEmbed()
     .setTitle("Commande d'aide")
     .setTitle("Prefix: `/`")
-    .setDescription("   `help`, `ban`, `kick`, `mute`");
+    .setDescription("   `help`, `ban`, `kick`, `mute`, `report`");
     message.delete()
     message.channel.send(embed);
 }
