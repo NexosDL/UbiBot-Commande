@@ -171,6 +171,12 @@ if(message.content.startsWith(prefix + "ttuuoo")) {
   message.channel.send(embed)
 }    
     
+const laarm = ["laarm"];
+  if(laarm.some(word => message.content.toLowerCase().includes(word)) ) {
+    message.react("448107939824140299");
+    message.delete();
+}
+    
 });
 
 client.login(process.env.TOKEN);
