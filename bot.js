@@ -23,7 +23,7 @@ bot.on("guildMemberRemove", member => {
 })
 
 client.on("message", async message => {
-let mcsw = message.content.startsWith;
+let mcsw = "message.content.startsWith";
     
     if (message.author.equals(bot.user)) return;
 
