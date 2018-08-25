@@ -134,6 +134,7 @@ if(message.content.startsWith(prefix + "report")) {
     .addField("Temps", message.createdAt)
     .addField("Reason", rreason);
 
+    if(rUser.id === message.author.id) return message.reply("Tu ne peux pas te report!");
     let reportschannel = message.guild.channels.find(`name`, "🔩logs");
     if(!reportschannel) return message.channel.send("Je ne peux pas trouver le salon #🔩logs");
     message.reply(`Tu as bien report ${rUser}`)
