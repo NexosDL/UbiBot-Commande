@@ -36,7 +36,7 @@ if(message.content.startsWith(prefix + "staff")) {
     .setColor("#f47142")
     .addField("Administrateurs", "    - So_Skill\n    - Laarm")
     .addField("Managers", "    - eиıмøx")
-    .addField("Développeurs bot", "    - Cecemel_PvP\n    - Minways Nexøs")
+    .addField("Développeurs bot", "    - Cecemel_PvP\n    - F/A Nexøs")
     message.channel.send(embed)
 }
     
