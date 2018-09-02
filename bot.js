@@ -46,8 +46,8 @@ if(message.content.startsWith(prefix + "join")) {
     const role = message.guild.roles.get("482291949852819497");
     message.member.addRole(role).catch(console.error);
     message.member.removeRole(message.author.guild.roles.find('name', 'Nouveau')).catch(console.error);
-    message.author.send("Bienvenue sur le serveur UbiMedia, tu as bien été enregistré, bonne continuation")
-    message.delete();
+    message.delete()
+    message.author.send("Bienvenue sur le serveur UbiMedia, tu as bien été enregistré, bonne continuation");
 }
     
 if(message.content.startsWith(prefix + "ban")) {
